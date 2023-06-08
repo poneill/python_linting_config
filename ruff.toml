@@ -1,0 +1,73 @@
+line-length = 100
+select = [
+"A",
+"B",
+"C",
+"D",
+"E",
+"F",
+"G",
+"I",
+"N",
+"Q",
+"S",
+"T",
+"W",
+"ANN",
+"ARG",
+"BLE",
+"COM",
+"DJ",
+"DTZ",
+"EM",
+"ERA",
+"EXE",
+"FBT",
+"ICN",
+"INP",
+"ISC",
+"NPY",
+"PD",
+"PGH",
+"PIE",
+"PL",
+"PT",
+"PTH",
+"PYI",
+"RET",
+"RSE",
+"RUF",
+"SIM",
+"SLF",
+"TCH",
+"TID",
+"TRY",
+"UP",
+"YTT"]
+
+ignore = [
+"ANN101",  # don't require to annotate self, especially because ruff is sometimes confused about ANN101 vs ANN102
+"ANN102",  # don't require to annotate cls
+"COM812",# don't worry about trailing commas, too confusing with black: https://github.com/charliermarsh/ruff/discussions/4213
+"D203", # one-blank-line-before class: conflicts with D211
+"D213",  # multiline-summary-second-string: conflicts with D212
+"INP001",  #warn about implicit namespaces (i.e. no __init__.py)  AFAICT this is necessary for scripts to sit in same dir as libs
+"N803",  # upercase variable names are often ok in scientific programming (ditto)
+"N806",  # upercase variable names are often ok in scientific programming
+"S311", # it's find to use standard pseudo-random generators
+"SIM300",  # ignore yoda conditions, too many false positives
+"TID252",  # don't ban relative imports-- ruff seems too easily confused by this
+]
+unfixable = [
+"F841",  # don't let ruff remove unused variables by default-- results are often very confusing.
+]
+
+# linting in test directories should be a little more relaxed
+[per-file-ignores]
+"*/test*.py" = [
+'S101',  # bare asserts actually required for pytest
+'N802',  # snake-case violations are fine for test methods
+'PLR2004',  # magic constants are fine
+'D103',  # don't require docstrings in tests: method names should suffice
+'ANN201' # don't worry about return types in tests
+]
