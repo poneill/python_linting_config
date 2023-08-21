@@ -68,6 +68,7 @@ unfixable = [
 'S101',  # bare asserts actually required for pytest
 'N802',  # snake-case violations are fine for test methods
 'PLR2004',  # magic constants are fine
+'D100', # don't require module docstrings in test files
 'D103',  # don't require docstrings in tests: method names should suffice
 'ANN201' # don't worry about return types in tests
 ]
